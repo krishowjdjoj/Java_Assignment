@@ -1,0 +1,45 @@
+Question:
+Write a Java program that includes:
+
+A generic class Box<T> with a constructor and a method to return the stored object.
+
+A generic method displayTypeAndValue(T value) that prints the type and value.
+
+In main(), create two objects of Box<T> with Integer and String types.
+
+Use displayTypeAndValue() to display each object.
+
+Solution:
+
+class Box<T> {
+    T item;
+
+    // Constructor
+    Box(T item) {
+        this.item = item;
+    }
+
+    // Method to return the item
+    public T getItem() {
+        return item;
+    }
+}
+
+public class GenericDemo {
+    
+    // Generic method to display type and value
+    static <T> void displayTypeAndValue(T value) {
+        System.out.println("Type: " + value.getClass().getName() + ", Value: " + value);
+    }
+
+    public static void main(String[] args) {
+        
+        // Integer type box
+        Box<Integer> intBox = new Box<>(100);
+        displayTypeAndValue(intBox.getItem());
+
+        // String type box
+        Box<String> strBox = new Box<>("Generics");
+        displayTypeAndValue(strBox.getItem());
+    }
+}

@@ -1,0 +1,87 @@
+Question:
+
+Create interfaces:
+
+Login with void register(), void login()
+
+Cart with void payment(), void wallet()
+
+Logout with void logout()
+
+Dashboard with void register(), void profile()
+
+Create Website interface that inherits all above.
+
+Implement all methods in Econsumer class.
+
+Solution:
+
+// Interface 1: Login
+interface Login {
+    void register();
+    void login();
+}
+
+// Interface 2: Cart
+interface Cart {
+    void payment();
+    void wallet();
+}
+
+// Interface 3: Logout
+interface Logout {
+    void logout();
+}
+
+// Interface 4: Dashboard
+interface Dashboard {
+    void register();
+    void profile();
+}
+
+// Interface 5: Website - inherits all above
+interface Website extends Login, Cart, Logout, Dashboard {}
+
+// Class that implements all
+class Econsumer implements Website {
+    // Login methods
+    public void register() {
+        System.out.println("Registering user...");
+    }
+
+    public void login() {
+        System.out.println("User logged in successfully.");
+    }
+
+    // Cart methods
+    public void payment() {
+        System.out.println("Processing payment...");
+    }
+
+    public void wallet() {
+        System.out.println("Accessing wallet...");
+    }
+
+    // Logout method
+    public void logout() {
+        System.out.println("User logged out.");
+    }
+
+    // Dashboard methods
+    public void profile() {
+        System.out.println("Showing user profile.");
+    }
+
+    // Main method to test
+    public static void main(String[] args) {
+        Econsumer user = new Econsumer();
+
+        // Call all methods
+        user.register();
+        user.login();
+        user.payment();
+        user.wallet();
+        user.profile();
+        user.logout();
+    }
+}

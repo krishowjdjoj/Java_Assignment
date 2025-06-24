@@ -1,0 +1,66 @@
+Questions:
+Count the number of objects created in the String pool and Heap.
+
+Compare the objects using:
+
+equals() → compares content
+
+== → compares references
+
+Complete the given if conditions based on comparisons.
+
+Solution:
+
+public class StringAssignment {
+    public static void main(String[] args) {
+        String s1 = "Delhi";                      // Pool: 1
+        String s2 = "Mumbai";                     // Pool: 2
+        String s3 = new String("Delhi");          // Heap: 1 (refers to pool "Delhi" too)
+        String s4 = new String("Mumbai");         // Heap: 1 (refers to pool "Mumbai" too)
+        String s5 = new String("Hello");          // Heap: 1 + Pool: 1 (new "Hello")
+
+        // Pool: "Delhi", "Mumbai", "Hello" → 3
+        // Heap: new String() x 3 → 3
+
+        System.out.println("Total from String pool = 3");
+        System.out.println("Total from Heap        = 3");
+
+        // Comparisons
+        if (s1.equals(s3) && s1 == s3) {
+            System.out.println("1. s1 == s3 and equal");
+        } else if (s1.equals(s3) && s1 != s3) {
+            System.out.println("1. s1 != s3 but equal");
+        }
+
+        if (s2 == s4) {
+            System.out.println("2. s2 == s4");
+        } else {
+            System.out.println("2. s2 != s4");
+        }
+
+        if (s2.equals(s4)) {
+            System.out.println("3. s2 equals s4");
+        }
+
+        if (s5.equals("Hello") && s5 == "Hello") {
+            System.out.println("4. s5 == 'Hello' and equal");
+        } else if (s5.equals("Hello") && s5 != "Hello") {
+            System.out.println("4. s5 != 'Hello' but equal");
+        }
+
+        // Assignments from image conditions
+        String x = s1;   // Delhi
+        String y = s3;   // new String("Delhi")
+
+        if (x.equals(y) && x != y) {
+            System.out.println("Condition (1) true: x.equals(y) && x != y");
+        }
+
+        String p = s4;   // new String("Mumbai")
+        String q = s2;   // "Mumbai"
+
+        if (p.equals(q) && p != q) {
+            System.out.println("Condition (2) true: p.equals(q) && p != q");
+        }
+    }
+}

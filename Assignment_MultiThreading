@@ -1,0 +1,87 @@
+=======================================Question========================================================
+
+Processes and Threads Simulation
+
+There are 2 processes:
+
+P1: Calculates factorial
+
+P2: Adds two numbers
+
+Each process has 2 threads:
+
+P1:
+
+t1: factorial of 4
+
+t2: factorial of 6
+
+P2:
+
+t3: sum of (4,5)
+
+t4: sum of (20,10)
+
+All threads start at the same time, but the output order is:
+
+Output order:
+1) t2
+2) t4
+3) t1
+4) t3
+
+=======================================Solution===============================================================
+
+class FactorialThread extends Thread {
+    int number;
+
+    FactorialThread(String name, int number) {
+        super(name);
+        this.number = number;
+    }
+
+    public void run() {
+        long fact = 1;
+        for (int i = 1; i <= number; i++) {
+            fact *= i;
+        }
+        System.out.println(getName() + ": Factorial of " + number + " = " + fact);
+    }
+}
+
+class AddThread extends Thread {
+    int a, b;
+
+    AddThread(String name, int a, int b) {
+        super(name);
+        this.a = a;
+        this.b = b;
+    }
+
+    public void run() {
+        int sum = a + b;
+        System.out.println(getName() + ": Sum of " + a + " and " + b + " = " + sum);
+    }
+}
+
+public class ProcessThreadDemo {
+    public static void main(String[] args) {
+        // Create threads
+        FactorialThread t1 = new FactorialThread("t1", 4); // factorial(4)
+        FactorialThread t2 = new FactorialThread("t2", 6); // factorial(6)
+        AddThread t3 = new AddThread("t3", 4, 5);          // 4 + 5
+        AddThread t4 = new AddThread("t4", 20, 10);        // 20 + 10
+
+        // Set priorities to control output order
+        t2.setPriority(Thread.MAX_PRIORITY);  // Highest
+        t4.setPriority(Thread.NORM_PRIORITY + 2);
+        t1.setPriority(Thread.NORM_PRIORITY);
+        t3.setPriority(Thread.MIN_PRIORITY);  // Lowest
+
+        // Start all threads
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+    }
+}

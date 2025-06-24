@@ -1,0 +1,65 @@
+Question:
+
+Accept data for 5 students using scanner and parameterized constructor. Display all total and percentage.
+
+
+Solution:
+
+import java.util.Scanner;
+
+class Student {
+    int rollno;
+    String name;
+    int sub1, sub2, sub3;
+    int total;
+    double percentage;
+
+    Student(int r, String n, int m1, int m2, int m3) {
+        rollno = r;
+        name = n;
+        sub1 = m1;
+        sub2 = m2;
+        sub3 = m3;
+    }
+
+    void calculate() {
+        total = sub1 + sub2 + sub3;
+        percentage = total / 3.0;
+    }
+
+    void display() {
+        System.out.println("\nRoll No: " + rollno);
+        System.out.println("Name: " + name);
+        System.out.println("Marks: " + sub1 + ", " + sub2 + ", " + sub3);
+        System.out.println("Total: " + total);
+        System.out.println("Percentage: " + percentage);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Student[] students = new Student[5];
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("\nEnter details for student " + (i + 1));
+            System.out.print("Roll No: ");
+            int r = sc.nextInt();
+            sc.nextLine(); // Consume leftover newline
+            System.out.print("Name: ");
+            String n = sc.nextLine();
+            System.out.print("Marks in Subject 1: ");
+            int m1 = sc.nextInt();
+            System.out.print("Marks in Subject 2: ");
+            int m2 = sc.nextInt();
+            System.out.print("Marks in Subject 3: ");
+            int m3 = sc.nextInt();
+
+            students[i] = new Student(r, n, m1, m2, m3);
+            students[i].calculate();
+        }
+
+        System.out.println("\n--- Students Result ---");
+        for (Student s : students) {
+            s.display();
+        }
+    }
+}

@@ -1,0 +1,77 @@
+-------Questions-----------------------------------------------------------------------------------
+Assignment 1: Vehicle and Runtime Polymorphism
+Problem Statement:
+Create a base class Vehicle and demonstrate dynamic (runtime) polymorphism with its child classes.
+
+Requirements:
+Create an abstract class Vehicle with:
+
+One abstract method: type()
+
+One normal method: fuel(), which displays the fuel type.
+
+Create 3 child classes:
+
+Car
+
+Bike
+
+Truck
+
+Each class should override the type() method.
+
+In the main() method:
+
+Create references of type Vehicle and assign them objects of Car, Bike, and Truck.
+
+Call the fuel() and type() methods to demonstrate runtime polymorphism.
+
+------------------Solution--------------------------------------------------------------------------------
+
+abstract class Vehicle {
+    // Normal method
+    void fuel() {
+        System.out.println("Vehicle runs on fuel.");
+    }
+
+    // Abstract method to override
+    abstract void type();
+}
+
+class Car extends Vehicle {
+    void type() {
+        System.out.println("Car is a 4-wheeler vehicle.");
+    }
+}
+
+class Bike extends Vehicle {
+    void type() {
+        System.out.println("Bike is a 2-wheeler vehicle.");
+    }
+}
+
+class Truck extends Vehicle {
+    void type() {
+        System.out.println("Truck is a heavy vehicle.");
+    }
+}
+
+public class VehicleMain {
+    public static void main(String[] args) {
+        Vehicle v;
+
+        v = new Car();    // Runtime polymorphism
+        v.fuel();
+        v.type();
+
+        v = new Bike();
+        v.fuel();
+        v.type();
+
+        v = new Truck();
+        v.fuel();
+        v.type();
+    }
+}
+
+

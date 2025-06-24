@@ -1,0 +1,69 @@
+Question:
+
+LinkedHashSet Operations
+Requirements:
+Create 2 LinkedHashSet objects in the same class.
+
+L1 → mixed type (int, boolean, String)
+
+L2 → Integer type, user-defined values
+
+Perform:
+
+a) Remove elements
+
+b) Check if 5 is present
+
+c) Check if "true" is present
+
+d) Check if value 0.5 is present or not
+
+e) Clear the set
+
+Solution:
+
+import java.util.*;
+
+public class LinkedHashSetDemo {
+    public static void main(String[] args) {
+        // Set 1: Mixed types
+        LinkedHashSet<Object> L1 = new LinkedHashSet<>();
+        L1.add(10);
+        L1.add("Java");
+        L1.add(true);
+        L1.add(3.14);
+
+        System.out.println("L1 Set: " + L1);
+
+        // Set 2: Integer type (user input)
+        LinkedHashSet<Integer> L2 = new LinkedHashSet<>();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter 5 integers for L2 set:");
+        for (int i = 0; i < 5; i++) {
+            L2.add(sc.nextInt());
+        }
+
+        System.out.println("L2 Set: " + L2);
+
+        // a) Remove element (e.g., remove "Java" and 10)
+        L1.remove("Java");
+        L2.remove(10); // Will remove only if 10 exists
+        System.out.println("L1 after removal: " + L1);
+        System.out.println("L2 after removal: " + L2);
+
+        // b) Check if 5 is present
+        System.out.println("Is 5 present in L2? " + L2.contains(5));
+
+        // c) Check if true is present
+        System.out.println("Is true present in L1? " + L1.contains(true));
+
+        // d) Check if 0.5 is present
+        System.out.println("Is 0.5 present in L1? " + L1.contains(0.5));
+
+        // e) Clear both sets
+        L1.clear();
+        L2.clear();
+        System.out.println("L1 cleared: " + L1);
+        System.out.println("L2 cleared: " + L2);
+    }
+}

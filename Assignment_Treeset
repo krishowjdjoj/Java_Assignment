@@ -1,0 +1,54 @@
+Question:
+
+TreeSet Operations on Programming Languages
+Requirements:
+
+Add 6 programming languages in random order to a TreeSet.
+Remove 2 languages.
+Add 3 more languages.
+Check if "Java" is present.
+Remove all elements and display.
+
+Solution:
+
+import java.util.TreeSet;
+
+public class TreeSetAssignment {
+    public static void main(String[] args) {
+        // 1. Create TreeSet and add 6 programming languages in random order
+        TreeSet<String> languages = new TreeSet<>();
+        languages.add("Python");
+        languages.add("C");
+        languages.add("Java");
+        languages.add("Ruby");
+        languages.add("JavaScript");
+        languages.add("C++");
+
+        System.out.println("Initial TreeSet: " + languages);
+
+        // 2. Remove 2 languages
+        languages.remove("C");
+        languages.remove("Ruby");
+
+        System.out.println("After removing 2 languages: " + languages);
+
+        // 3. Add 3 more languages
+        languages.add("Kotlin");
+        languages.add("Go");
+        languages.add("Swift");
+
+        System.out.println("After adding 3 more languages: " + languages);
+
+        // 4. Check if 'Java' is present
+        if (languages.contains("Java")) {
+            System.out.println("Java is present in the TreeSet.");
+        } else {
+            System.out.println("Java is NOT present in the TreeSet.");
+        }
+
+        // 5. Remove all elements
+        languages.clear();
+
+        System.out.println("After removing all elements: " + languages);
+    }
+}

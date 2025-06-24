@@ -1,0 +1,93 @@
+Question:===================================================================
+
+Use abstract class and methods like leaves() and holidays().
+
+Vehicle will have abstract methods + 1 normal method.
+
+Override abstract methods in all child classes.
+
+In Main(), use dynamic method dispatch (parent ref → child obj) to call:
+
+all child class methods
+
+all parent class methods
+
+==============================================================================
+Vehicle (abstract)
+   ↑
+  HMC (extends Vehicle)
+     ↑
+    Infosys (extends HMC)
+       ↑
+     TCS (extends Infosys)
+================================================================================
+
+Solution:
+
+// Abstract Parent class
+abstract class Vehicle {
+    abstract void leaves();
+    abstract void holidays();
+
+    void travelPolicy() {
+        System.out.println("Vehicle: Follow travel policy of the company.");
+    }
+}
+
+// Child 1
+class HMC extends Vehicle {
+    public void leaves() {
+        System.out.println("HMC: 20 paid leaves per year.");
+    }
+
+    public void holidays() {
+        System.out.println("HMC: 15 public holidays.");
+    }
+}
+
+// Child 2
+class Infosys extends HMC {
+    public void leaves() {
+        System.out.println("Infosys: 25 paid leaves per year.");
+    }
+
+    public void holidays() {
+        System.out.println("Infosys: 18 public holidays.");
+    }
+}
+
+// Child 3
+class TCS extends Infosys {
+    public void leaves() {
+        System.out.println("TCS: 22 paid leaves per year.");
+    }
+
+    public void holidays() {
+        System.out.println("TCS: 20 public holidays.");
+    }
+}
+
+public class CompanyPolicy {
+    public static void main(String[] args) {
+        // Using dynamic method dispatch
+        Vehicle v;
+
+        v = new HMC();
+        System.out.println("\n-- HMC Info --");
+        v.leaves();
+        v.holidays();
+        v.travelPolicy();
+
+        v = new Infosys();
+        System.out.println("\n-- Infosys Info --");
+        v.leaves();
+        v.holidays();
+        v.travelPolicy();
+
+        v = new TCS();
+        System.out.println("\n-- TCS Info --");
+        v.leaves();
+        v.holidays();
+        v.travelPolicy();
+    }
+}

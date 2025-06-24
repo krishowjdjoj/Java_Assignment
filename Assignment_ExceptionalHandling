@@ -1,0 +1,71 @@
+=======================================Question==========================================================================
+
+You need to check the salary of the person and based on that, return the output from the program using custom exceptions.
+
+Conditions:
+
+If salary < 2100 → Throw custom exception: "you need to work hard"
+
+If salary is between 2100 and 5000 → Throw custom exception: "your salary is somehow good"
+
+If salary is between 5100 and 9000 → Throw custom exception: "salary is very good"
+
+Task:
+
+Design custom exception classes for each case.
+
+Take salary input from the user.
+
+Throw and handle the custom exceptions accordingly.
+
+==============================================Solution==========================================================================
+
+import java.util.*;
+
+// Custom Exception for Low Salary
+class LowSalaryException extends Exception {
+    LowSalaryException(String message) {
+        super(message);
+    }
+}
+
+// Custom Exception for Average Salary
+class AverageSalaryException extends Exception {
+    AverageSalaryException(String message) {
+        super(message);
+    }
+}
+
+// Custom Exception for Good Salary
+class GoodSalaryException extends Exception {
+    GoodSalaryException(String message) {
+        super(message);
+    }
+}
+
+public class SalaryCheck {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter your salary: ");
+        int salary = sc.nextInt();
+
+        try {
+            // Condition check
+            if (salary < 2100) {
+                throw new LowSalaryException("you need to work hard");
+            } else if (salary >= 2100 && salary <= 5000) {
+                throw new AverageSalaryException("your salary is somehow good");
+            } else if (salary >= 5100 && salary <= 9000) {
+                throw new GoodSalaryException("salary is very good");
+            } else {
+                System.out.println("Wow! Your salary is excellent ");
+            }
+        } 
+        catch (LowSalaryException | AverageSalaryException | GoodSalaryException e) {
+            System.out.println("Custom Exception Caught: " + e.getMessage());
+        }
+
+        sc.close();
+    }
+}

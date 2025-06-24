@@ -1,0 +1,81 @@
+-------------------------Questions-----------------------------------------------------------------
+
+Assignment 2: Abstract Class and Multi-Level Inheritance
+Problem Statement:
+Create an abstract class MNC with child classes Infosys and Hello. Use abstract methods, constructors, and runtime polymorphism.
+
+Requirements:
+Create an abstract class MNC that includes:
+
+Two abstract methods: leaves() and holidays()
+
+One constructor that displays a message
+
+One normal method: welcome()
+
+Create a class Infosys that extends MNC:
+
+Provide an implementation for the holidays() method.
+
+Keep the leaves() method abstract.
+
+Create a class Hello that extends Infosys:
+
+Provide implementations for both abstract methods (leaves() and holidays()).
+
+Create one extra normal method called greetings().
+
+In the main() method:
+
+Use runtime polymorphism by creating a reference of MNC and assigning it to an object of Hello.
+
+Call all inherited and overridden methods.
+
+Call the new method in Hello as well.
+
+-----------Solution------------------------------------------------------------------------------------------
+
+abstract class MNC {
+    MNC() {
+        System.out.println("MNC Constructor called");
+    }
+
+    abstract void leaves();   // abstract method
+    abstract void holidays(); // abstract method
+
+    void welcome() {
+        System.out.println("Welcome to MNC company.");
+    }
+}
+
+abstract class Infosys extends MNC {
+    public void holidays() {
+        System.out.println("Infosys provides 10 holidays a year.");
+    }
+    // leaves() still abstract
+}
+
+class Hello extends Infosys {
+    public void leaves() {
+        System.out.println("Hello class provides 15 leaves a year.");
+    }
+
+    void greetings() {
+        System.out.println("Greetings from Hello class!");
+    }
+}
+
+public class CompanyMain {
+    public static void main(String[] args) {
+        MNC ref; // Reference of parent class
+
+        ref = new Hello(); // Runtime polymorphism
+        ref.welcome();
+        ref.holidays();
+        ref.leaves();
+
+        // To access Hello class method
+        Hello helloObj = new Hello();
+        helloObj.greetings();
+    }
+}

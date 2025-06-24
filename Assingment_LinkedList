@@ -1,0 +1,84 @@
+Question:
+LinkedList of Months
+Tasks Summary:
+Add months: May, June, July, August, April, November
+
+Add: December (at last), January (at first)
+
+Add: March (at index 3), February (at index 2)
+
+Add: September (start), October (end)
+
+Print all, odd, even index months
+
+Check if LinkedList contains "May", "Winter"
+
+Fetch first and last months using peek()
+
+Remove first and last using poll()
+
+Solution:
+
+
+import java.util.LinkedList;
+import java.util.Iterator;
+
+public class MonthLinkedList {
+    public static void main(String[] args) {
+        LinkedList<String> months = new LinkedList<>();
+
+        // Step 1: Add 6 months
+        months.add("May");
+        months.add("June");
+        months.add("July");
+        months.add("August");
+        months.add("April");
+        months.add("November");
+
+        // Step 2: Add December (last), January (first)
+        months.addLast("December");
+        months.addFirst("January");
+
+        // Step 3: Add March at index 3, February at index 2
+        months.add(3, "March");
+        months.add(2, "February");
+
+        // Step 4: Add September at start, October at end
+        months.addFirst("September");
+        months.addLast("October");
+
+        // Step 5.1: Print all months
+        System.out.println("All months: " + months);
+
+        // Step 5.2: Print months at odd indices
+        System.out.print("Odd index months: ");
+        for (int i = 1; i < months.size(); i += 2) {
+            System.out.print(months.get(i) + " ");
+        }
+        System.out.println();
+
+        // Step 5.3: Print months at even indices
+        System.out.print("Even index months: ");
+        for (int i = 0; i < months.size(); i += 2) {
+            System.out.print(months.get(i) + " ");
+        }
+        System.out.println();
+
+        // Step 6.1: Check if "May" exists
+        System.out.println("Contains 'May'? " + months.contains("May"));
+
+        // Step 6.2: Check if "Winter" exists
+        System.out.println("Contains 'Winter'? " + months.contains("Winter"));
+
+        // Step 7: Fetch first and last month using peek()
+        System.out.println("First month (peek): " + months.peekFirst());
+        System.out.println("Last month (peek): " + months.peekLast());
+
+        // Step 8: Remove first and last using poll()
+        System.out.println("Removed first month (poll): " + months.pollFirst());
+        System.out.println("Removed last month (poll): " + months.pollLast());
+
+        // Final state of list
+        System.out.println("Months after removals: " + months);
+    }
+}

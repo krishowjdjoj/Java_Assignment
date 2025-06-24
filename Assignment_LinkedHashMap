@@ -1,0 +1,80 @@
+Question:
+
+LinkedHashMap of 10 Countries
+Tasks:
+Create a LinkedHashMap<Integer, String> of 10 countries (countryCode, countryName).
+Perform the following operations:
+Fetch all the keys.
+Fetch all the values.
+Check if key 4 exists.
+Check if value "India" exists.
+Remove a country by key.
+Create another map and merge.
+Delete a key from map.
+Check if map is empty.
+Clear the map.
+
+Solution:
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Collection;
+
+public class CountryMap {
+    public static void main(String[] args) {
+        // 1. Create LinkedHashMap of 10 countries
+        LinkedHashMap<Integer, String> countryMap = new LinkedHashMap<>();
+
+        countryMap.put(1, "India");
+        countryMap.put(2, "USA");
+        countryMap.put(3, "Canada");
+        countryMap.put(4, "Germany");
+        countryMap.put(5, "France");
+        countryMap.put(6, "Japan");
+        countryMap.put(7, "Australia");
+        countryMap.put(8, "Brazil");
+        countryMap.put(9, "Italy");
+        countryMap.put(10, "Russia");
+
+        System.out.println("Original Country Map: " + countryMap);
+
+        // 2. Fetch all the keys
+        Set<Integer> keys = countryMap.keySet();
+        System.out.println("\nAll Keys: " + keys);
+
+        // 3. Fetch all the values
+        Collection<String> values = countryMap.values();
+        System.out.println("All Values: " + values);
+
+        // 4. Check if key 4 exists
+        System.out.println("Key 4 exists? " + countryMap.containsKey(4));
+
+        // 5. Check if value "India" exists
+        System.out.println("Value 'India' exists? " + countryMap.containsValue("India"));
+
+        // 6. Remove a country by key (remove key 6 - Japan)
+        countryMap.remove(6);
+        System.out.println("After removing key 6 (Japan): " + countryMap);
+
+        // 7. Create new map and merge
+        LinkedHashMap<Integer, String> newMap = new LinkedHashMap<>();
+        newMap.put(11, "Spain");
+        newMap.put(12, "Sweden");
+
+        countryMap.putAll(newMap);
+        System.out.println("After merging new map: " + countryMap);
+
+        // 8. Delete key 5 (France)
+        countryMap.remove(5);
+        System.out.println("After deleting key 5 (France): " + countryMap);
+
+        // 9. Check if map is empty
+        System.out.println("Is map empty? " + countryMap.isEmpty());
+
+        // 10. Clear the map
+        countryMap.clear();
+        System.out.println("After clearing map: " + countryMap);
+    }
+}
+
